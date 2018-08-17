@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+    <title>添加</title>
+    <style>
+        .my-class{
+            width:300px;
+            height:160px;
+            /*position:relative;*/
+            left:50%;
+            top:50%;
+            margin-left:750px;
+            margin-top:80px;
+
+        }
+        .my-class-right{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+<form th:each="goods:${goods}" class="layui-form my-class" action="/editGoods"  method="post">
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name"  th:value="${goods.goodsName}" class="layui-input">
+            <input type="hidden" name="id"  th:value="${goods.id}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">品牌</label>
+        <div class="layui-input-block">
+            <input type="text" name="brand"  th:value="${goods.goodsBrand}" lay-verify="title" autocomplete="off" placeholder="请输入品牌" class="layui-input">
+
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">价格</label>
+        <div class="layui-input-block">
+            <input type="text" name="price" th:value="${goods.goodsPrice}" lay-verify="title" autocomplete="off" placeholder="请输入价格" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">产地</label>
+        <div class="layui-input-block">
+            <input type="text" name="place" th:value="${goods.goodsPlace}" lay-verify="title" autocomplete="off" placeholder="请输入产地" class="layui-input">
+
+        </div>
+    </div>
+
+    <button class="layui-btn my-class-right" type="submit" > 修改</button>
+</form>
+</body>
+</html>
